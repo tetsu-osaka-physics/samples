@@ -1,0 +1,46 @@
+\documentclass[a4paper, papersize, dvipdfmx, fleqn, f, nobox, anslabel, bold, ideographic]{jsarticle}
+\usepackage{exam_s}
+\begin{document}
+\section{}\fstyle{Kakko}
+
+\begin{center}
+  \setlength{\arrayrulewidth}{1.2pt}
+  \begin{tabular}{p{0.31\hsize}p{0.31\hsize}p{0.31\hsize}}\hline \\[-.6zw]
+    & & \hfil ［A］各1点，計10点 \\
+    \ans & \multicolumn{2}{l}{\ans} \\
+    \ans & \ans & \ans \\
+    \ans & \ans & \ans \\
+    \ans & \ans & \\
+    & & \hfil ［B］各2点，計10点 \\
+    \ans & \ansskip & \ans \\
+    \ans & \ans & \\
+    \hline
+  \end{tabular}
+  \setcounter{Fcntr}{0}
+\end{center}
+
+\subsection{}
+A, Bは\verb|\subsection{}|で出す。
+
+\verb|\uw|で波線引くと，\verb|\fstyle|で指定した形式で番号が自動的に入る：
+\[\uw{A}\]
+
+第１問以外はenumerate環境つかわなくてもいい。
+３分の１のスペースで収まらない場合は，\f*{2}みたいにすればいい。
+
+図とかを答えさせる場合は，表の\verb|\ans|は\verb|\ansskip|にする。
+
+\uw{とてもとても長い解答とてもとても長い解答}
+\uw{3}\uw{4}\uw{5}\uw{6}\uw{7}\uw{8}\uw{9}\uw{10}
+
+\subsection{}
+\uw{11}
+
+12番目の解答は略するので，カウンターを一つ進める：\verb|\addtocounter{Fcntr}{1}|
+\addtocounter{Fcntr}{1}
+
+\uw{13}\uw{14}\uw{\protect\ajMaru{15}}
+
+\verb|\ajMaru|とかを解答にする場合は\verb|\protect|をつける。
+
+\end{document}

@@ -1,0 +1,1780 @@
+\documentclass[a4paper, papersize, dvipdfmx, bold]{jsarticle}
+\usepackage{tetsu_physics}
+\usepackage{siunitx}
+\usepackage{listings}
+\lstset{
+basicstyle={\ttfamily},
+identifierstyle={\small},
+commentstyle={\smallitshape},
+keywordstyle={\small\bfseries},
+ndkeywordstyle={\small},
+stringstyle={\small\ttfamily},
+frame={tb},
+breaklines=true,
+columns=[l]{fullflexible},
+% numbers=left,
+xrightmargin=0zw,
+xleftmargin=1zw,
+% numberstyle={\scriptsize},
+% stepnumber=1,
+% numbersep=1zw,
+lineskip=-0.5ex
+}
+\begin{document}
+\begin{center}
+  {\Large CircuiTikZまとめ}\par
+  最終更新：\makeatletter\the\year 年\two@digits\month 月\two@digits\day 日
+\end{center}
+
+\section{描画の基本}
+\texttt{=}でラベル，\texttt{i}で電流，\texttt{v}で電圧．
+
+\bigskip
+
+\begin{minipage}{0.15\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R=$r$\,\si{[\micro\ohm]}, i=$i$, v=$v$] (2, 0);
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.8\hsize}
+\begin{lstlisting}
+\begin{circuitikz}
+\draw (0, 0) to [R=$r$\,\si{[\micro\ohm]}, i=$i$, v=$v$] (2, 0);
+\end{circuitikz}
+\end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.15\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R=\SI{1}{[M\ohm]}, i=$i$, v=$v$] (2, 0);
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.8\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R=\SI{1}{[M\ohm]}, i=$i$, v=$v$] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\subsection{ラベル}
+ラベルを上に出す場合は\texttt{l\textasciicircum}，下に出す場合は\texttt{l\_}を使う．
+
+\bigskip
+
+\begin{minipage}{0.2\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l^=$R$] (2, 0) node [right] {\texttt{l\textasciicircum}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.75\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l^=$R$] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.2\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l_=$R$] (2, 0) node [right] {\texttt{l\_}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.75\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l_=$R$] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+ラベルを上下に出したければ\texttt{a\textasciicircum}, \texttt{l\_}を使う．
+
+\bigskip
+
+\begin{minipage}{0.2\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, a^=$R_1$, l_=$R_2$] (2, 0);
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.75\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, a^=$R_1$, l_=$R_2$] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\subsection{電流}
+電流は\texttt{i}の代わりに\texttt{f}も使える．
+\verb|f=$i$|にすればいい感じに空気を読んでくれる．自分で場所を指定したい場合は以下の8通り．
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R$, f>^=$i$] (3, 0) node [right] {\texttt{f>\textasciicircum}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R$, f>^=$i$] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R$, f>_=$i$] (3, 0) node [right] {\texttt{f>\_}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R$, f>_=$i$] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R$, f^<=$i$] (3, 0) node [right] {\texttt{f\textasciicircum<}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R$, f^<=$i$] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R$, f_<=$i$] (3, 0) node [right] {\texttt{f\_<}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R$, f_<=$i$] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R$, f<^=$i$] (3, 0) node [right] {\texttt{f<\textasciicircum}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R$, f<^=$i$] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R$, f<_=$i$] (3, 0) node [right] {\texttt{f<\_}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R$, f<_=$i$] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R$, f^>=$i$] (3, 0) node [right] {\texttt{f\textasciicircum>}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R$, f^>=$i$] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R$, f_>=$i$] (3, 0) node [right] {\texttt{f\_>}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R$, f_>=$i$] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\verb|xf=\relax|を使えば，電流の矢印に×がつく．
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R$, xf>^=\relax] (3, 0) node [right] {\texttt{xf>\textasciicircum}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R$, xf>^=\relax] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R$, xf>_=\relax] (3, 0) node [right] {\texttt{xf>\_}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R$, xf>_=\relax] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R$, xf^<=\relax] (3, 0) node [right] {\texttt{xf\textasciicircum<}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R$, xf^<=\relax] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R$, xf_<=\relax] (3, 0) node [right] {\texttt{xf\_<}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R$, xf_<=\relax] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R$, xf<^=\relax] (3, 0) node [right] {\texttt{xf<\textasciicircum}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R$, xf<^=\relax] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R$, xf<_=\relax] (3, 0) node [right] {\texttt{xf<\_}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R$, xf<_=\relax] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R$, xf^>=\relax] (3, 0) node [right] {\texttt{xf\textasciicircum>}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R$, xf^>=\relax] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R$, xf_>=\relax] (3, 0) node [right] {\texttt{xf\_>}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R$, xf_>=\relax] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\subsection{電圧}
+例の三角形の奴はそのうち作るかも．
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l_=$R_1$, v^>=$v$] (3, 0) node [right] {\texttt{v\textasciicircum>}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l_=$R_1$, v^>=$v$] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R_1$, v_>=$v$] (3, 0) node [right] {\texttt{v\_>}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R_1$, v_>=$v$] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l_=$R_1$, v^<=$v$] (3, 0) node [right] {\texttt{v\textasciicircum<}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l_=$R_1$, v^<=$v$] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, l=$R_1$, v_<=$v$] (3, 0) node [right] {\texttt{v\_<}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, l=$R_1$, v_<=$v$] (3, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\subsection{拡大縮小}
+\texttt{scale}を指定する．素子の大きさも変更する場合は\texttt{transform shape}を付ける．
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}[scale=0.75]
+    \draw (0, 0) to [R, l=$R$, i=$i$, v=$v$] (3, 0);
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}[scale=0.75]
+      \draw (0, 0) to [R, l=$R$, i=$i$, v=$v$] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}[scale=0.75, transform shape]
+    \draw (0, 0) to [R, l=$R$, i=$i$, v=$v$] (3, 0);
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}[scale=0.75, transform shape]
+      \draw (0, 0) to [R, l=$R$, i=$i$, v=$v$] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\subsection{端点処理}
+\texttt{*}, \texttt{o}, \texttt{d}を使う．導線のみ描く場合は\texttt{short}を使う．
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) node [left] {\texttt{*}} to [R, *-o] (2, 0) node [right] {\texttt{o}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, *-o] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) node [left] {\texttt{d}} to [short, d-] (2, 0);
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [short, d-] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\subsection{アンカー}
+\texttt{name}で素子に名前を付けると，素子近傍の座標が定義される．
+
+\begin{center}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, name=Resistor] (2, 0);
+    \draw[thick, <-, >=stealth, blue] (Resistor.left) to [out=135, in=270] +(-0.5, 1) node [above] {left};
+    \draw[thick, <-, >=stealth, blue] (Resistor.center) -- +(0, 1) node [above] {center};
+    \draw[thick, <-, >=stealth, blue] (Resistor.right) to [out=45, in=270] +(0.5, 1) node [above] {right};
+    \begin{scope}[shift={(6, 0)}]
+      \draw (0, 0) to [R, name=Resistor] (2, 0);
+      \draw[thick, <-, >=stealth, blue] (Resistor.north) -- +(0, 1) node [above] {north};
+      \draw[thick, <-, >=stealth, blue] (Resistor.north east) -- +(0.7, 0.5) node [above right] {north east};
+      \draw[thick, <-, >=stealth, blue] (Resistor.east) -- +(1, 0) node [right] {east};
+      \draw[thick, <-, >=stealth, blue] (Resistor.south east) -- +(0.7, -0.5) node [below right] {south east};
+      \draw[thick, <-, >=stealth, blue] (Resistor.south) -- +(0, -1) node [below] {south};
+      \draw[thick, <-, >=stealth, blue] (Resistor.south west) -- +(-0.7, -0.5) node [below left] {south west};
+      \draw[thick, <-, >=stealth, blue] (Resistor.west) -- +(-1, 0) node [left] {west};
+      \draw[thick, <-, >=stealth, blue] (Resistor.north west) -- +(-0.7, 0.5) node [above left] {north west};
+    \end{scope}
+  \end{circuitikz}
+\end{center}
+
+\bigskip
+
+\begin{minipage}{0.25\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, name=Resistor] (2, 0);
+    \draw[thick, <-, >=stealth, blue] (Resistor.center) -- +(1, 1) node [above] {center};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.7\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, name=Resistor] (2, 0);
+      \draw[thick, <-, >=stealth, blue] (Resistor.center) -- +(1, 1) node [above] {center};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\section{素子}
+\subsection{接地}
+\texttt{node}のオプションに指定する．
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) node [ground] {};
+    \draw (1.2, -0.25) node {\texttt{ground}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) node [ground] {};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) node [nground] {};
+    \draw (1.2, -0.25) node {\texttt{nground}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) node [nground] {};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) node [pground] {};
+    \draw (1.2, -0.25) node {\texttt{pground}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) node [pground] {};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\paragraph{Tips}
+\texttt{node}を回転させる場合は\texttt{rotate}を指定する．
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) node [ground, rotate=90] {};
+    \draw (0, -0.4) node [right] {\texttt{ground, rotate=90}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) node [ground, rotate=90] {};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\subsection{抵抗}
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R] (2, 0) node [right] {\texttt{R}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [vR] (2, 0) node [right] {\texttt{vR}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [vR] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, fill=black] (2, 0) node [right] {\texttt{R, fill=black}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, fill=black] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [R, american resistor] (2, 0);
+    \draw (0, -0.5) node [right] {\texttt{R, american resistor}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [R, american resistor] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\paragraph{Tips}
+素子を（銅線に関して）反転させる場合は\texttt{mirror}を使う．
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [vR, mirror] (2, 0) node [right] {\texttt{vR, mirror}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [vR, mirror] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\subsection{コンデンサー}
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [capacitor] (1.5, 0) node [right] {\texttt{capacitor}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [capacitor] (1.5, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [wavy capacitor] (1.5, 0) node [right] {\texttt{wavy capacitor}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [wavy capacitor] (1.5, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [variable capacitor] (1.5, 0) node [right] {\texttt{variable capacitor}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [variable capacitor] (1.5, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [capacitor, \Cwidth=0.4] (1.5, 0);
+    \draw (0, -1) node [right] {\texttt{capacitor, \textbackslash Cwidth=0.4}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [capacitor, \Cwidth=0.4] (1.5, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\paragraph{Tips}
+コンデンサーの電荷等を描く場合は次のようにする．
+
+\bigskip
+
+\begin{minipage}{0.2\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [capacitor, \Cwidth=0.4, name=capa] (2, 0);
+    \draw (capa.center) node {$C$};
+    \draw (capa.north east) node [right] {$+Q$};
+    \draw (capa.north west) node [left] {$-Q$};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.75\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [capacitor, \Cwidth=0.4, name=capa] (2, 0);
+      \draw (capa.center) node {$C$};
+      \draw (capa.north east) node [right] {$+Q$};
+      \draw (capa.north west) node [left] {$-Q$};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+容量だけの場合は，
+\begin{center}
+  \texttt{\textbackslash drawCapa*}\{始点\}\{終点\}\{容量\}
+\end{center}
+
+\bigskip
+
+\begin{minipage}{0.2\hsize}
+  \begin{circuitikz}
+    \drawCapa*{(0, 0)}{(2, 0)}{$C_1$};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.75\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \drawCapa*{(0, 0)}{(2, 0)}{$C_1$};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+コンデンサーの容量・電荷を両方描く場合は，
+\begin{center}
+  \texttt{\textbackslash drawCapa[!]}\{始点\}\{終点\}\{容量\}\{電荷\}
+\end{center}
+銅線が横の場合に，右側の極板を$+$にするには\texttt{[r]}（省略可），左側の極板を$+$にするには\texttt{[l]}．
+銅線が縦の場合に，上側の極板を$+$にするには\texttt{[u]}，下側の極板を$+$にするには\texttt{[d]}．
+\textbf{終点は終点より右・上に配置すること！}
+
+\bigskip
+
+\begin{minipage}{0.2\hsize}
+  \begin{circuitikz}
+    \drawCapa{(0, 0)}{(2, 0)}{$C_1$}{$Q_1$};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.75\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \drawCapa{(0, 0)}{(2, 0)}{$C_1$}{$Q_1$};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.2\hsize}
+  \begin{circuitikz}
+    \drawCapa[l]{(0, 0)}{(2, 0)}{$C_1$}{$Q_1$};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.75\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \drawCapa[l]{(0, 0)}{(2, 0)}{$C_1$}{$Q_1$};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.2\hsize}
+  \begin{circuitikz}
+    \drawCapa[u]{(0, 0)}{(0, 2)}{$C_1$}{$Q_1$};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.75\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \drawCapa[u]{(0, 0)}{(0, 2)}{$C_1$}{$Q_1$};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.2\hsize}
+  \begin{circuitikz}
+    \drawCapa[d]{(0, 0)}{(0, 2)}{$C_1$}{$Q_1$};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.75\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \drawCapa[d]{(0, 0)}{(0, 2)}{$C_1$}{$Q_1$};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\subsection{コイル}
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [L] (2, 0) node [right] {\texttt{L}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [L] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [vL] (2, 0) node [right] {\texttt{vL}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [vL] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [cute choke] (2, 0) node [right] {\texttt{cute choke}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [cute choke] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [L, inductors/coils=9] (2, 0);
+    \draw (0, -0.5) node [right] {\texttt{L, inductors/coils=9}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [L, inductors/coils=9] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [L, american inductors] (2, 0);
+    \draw (0, -0.5) node [right] {\texttt{L, american inductors}} ;
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [L, american inductors] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [cute choke, twolineschoke] (2, 0) node [right] {\shortstack[l]{\texttt{cute choke,}\\\texttt{twolineschoke}}} ;
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [cute choke, twolineschoke] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\subsection{ダイオード}
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [empty diode] (2, 0) node [right] {\texttt{empty diode}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [empty diode] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [full diode] (2, 0) node [right] {\texttt{full diode}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [full diode] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [stroke diode] (2, 0) node [right] {\texttt{stroke diode}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [stroke diode] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [empty Zener diode] (2, 0) node [right] {\texttt{empty Zener diode}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [empty Zener diode] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\subsection{電源}
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [battery] (2, 0) node [right] {\texttt{battery}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [battery] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [battery1] (2, 0) node [right] {\texttt{battery1}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [battery1] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [battery2] (2, 0) node [right] {\texttt{battery2}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [battery2] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [ACV] (2, 0) node [right] {\texttt{ACV}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [ACV] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [sinusoidal voltage source] (2, 0);
+    \draw (0, -0.8) node [right] {\texttt{sinusoidal voltage source}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [sinusoidal voltage source] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\paragraph{Tips}
+逆向きに描画したい場合は始点と終点を入れ替えるか，\texttt{invert}を使用する．
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [battery, invert] (2, 0) node [right] {\texttt{battery, invert}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [battery, invert] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\subsection{計器}
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [rmeter, t=A] (2, 0) node [right] {\texttt{rmeter, t=A}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [rmeter, t=A] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [rmeter, t=V] (2, 0) node [right] {\texttt{rmeter, t=V}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [rmeter, t=V] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [ammeter] (2, 0) node [right] {\texttt{ammeter}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [ammeter] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [voltmeter] (2, 0) node [right] {\texttt{voltmeter}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [voltmeter] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [smeter, t=A] (2, 0) node [right] {\texttt{smeter, t=A}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [smeter, t=A] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [smeter, t=V] (2, 0) node [right] {\texttt{smeter, t=V}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [smeter, t=V] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [qiprobe] (2, 0) node [right] {\texttt{qiprobe}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [qiprobe] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [qvprobe] (2, 0) node [right] {\texttt{qvprobe}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [qvprobe] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\subsection{その他}
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [lamp] (2, 0) node [right] {\texttt{lamp}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [lamp] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [loudspeaker] (2, 0) node [right] {\texttt{loudspeaker}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [loudspeaker] (2, 0)
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\subsection{交差}
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (-1, 0) to (1, 0);
+    \draw (0, 1) to (0, -1);
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (-1, 0) to (1, 0);
+      \draw (0, 1) to (0, -1);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (-1, 0) to (1, 0);
+    \draw (0, 1) to (0, -1);
+    \draw (0, 0) node [circ] {};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (-1, 0) to (1, 0);
+      \draw (0, 1) to (0, -1);
+      \draw (0, 0) node [circ] {};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (-1, 0) to [crossing] (1, 0) node [right] {\texttt{crossing}};
+    \draw (0, 1) to (0, -1);
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (-1, 0) to [crossing] (1, 0);
+      \draw (0, 1) to (0, -1);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\subsection{変圧器}
+\texttt{node}のオプションにする．
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) node [transformer] {};
+    \draw (0, -1.5) node {\texttt{transformer}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) node [transformer] {};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) node [transformer core] {};
+    \draw (0, -1.5) node {\texttt{transformer core}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) node [transformer core] {};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) node [transformerNL] {};
+    \draw (0, -1.5) node {\texttt{transformerNL}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) node [transformerNL] {};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) node [transformerNL core] {};
+    \draw (0, -1.5) node {\texttt{transformerNL core}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) node [transformerNL core] {};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\begin{minipage}{0.3\hsize}
+  \begin{circuitikz}
+    \ctikzset{transformer L1/.style={american inductors, inductors/coils=6, inductors/width=0.8}}
+    \ctikzset{transformer L2/.style={inductors/coils=10, inductors/width=1.0}}
+    \draw (0, 0) node [transformer core] {};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \ctikzset{transformer L1/.style={american inductors, inductors/coils=6, inductors/width=0.8}}
+      \ctikzset{transformer L2/.style={inductors/coils=10, inductors/width=1.0}}
+      \draw (0, 0) node [transformer core] {};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\paragraph{Tips}
+変圧器のアンカーは以下の通り．
+
+\begin{center}
+  \begin{circuitikz}
+    \draw (0, 0) node [transformer, name=trans] {};
+    \draw[thick, <-, >=stealth, blue] (trans.inner dot A1) -- +(-1, 0.5) node [above] {inner dot A1};
+    \draw[thick, <-, >=stealth, blue] (trans.inner dot A2) -- +(-1, -0.5) node [below] {inner dot A2};
+    \draw[thick, <-, >=stealth, blue] (trans.inner dot B1) -- +(1, 0.5) node [above] {inner dot B1};
+    \draw[thick, <-, >=stealth, blue] (trans.inner dot B2) -- +(1, -0.5) node [below] {inner dot B2};
+    %
+    \begin{scope}[shift={(7, 0)}]
+      \draw (0, 0) node [transformer, name=trans] {};
+      \draw[thick, <-, >=stealth, blue] (trans.outer dot A1) -- +(-1, 0.5) node [above] {outer dot A1};
+      \draw[thick, <-, >=stealth, blue] (trans.outer dot A2) -- +(-1, -0.5) node [below] {outer dot A2};
+      \draw[thick, <-, >=stealth, blue] (trans.outer dot B1) -- +(1, 0.5) node [above] {outer dot B1};
+      \draw[thick, <-, >=stealth, blue] (trans.outer dot B2) -- +(1, -0.5) node [below] {outer dot B2};
+    \end{scope}
+  \end{circuitikz}
+\end{center}
+
+\begin{center}
+  \begin{circuitikz}
+    \draw (0, 0) node [transformer, name=trans] {};
+    \draw[thick, <-, >=stealth, blue] (trans.A1) -- +(0, 0.5) node [above] {A1};
+    \draw[thick, <-, >=stealth, blue] (trans.A2) -- +(0, -0.5) node [below] {A2};
+    \draw[thick, <-, >=stealth, blue] (trans.B1) -- +(0, 0.5) node [above] {B1};
+    \draw[thick, <-, >=stealth, blue] (trans.B2) -- +(0, -0.5) node [below] {B2};
+    \draw[thick, <-, >=stealth, blue] (trans.base) -- +(0, 0.5) node [above] {base};
+    \draw[thick, <-, >=stealth, blue] (trans-L1.midtap) -- +(1, 0.5) node [right] {L1.midtap};
+    \draw[thick, <-, >=stealth, blue] (trans-L2.midtap) -- +(-1, -0.5) node [left] {L2.midtap};
+    %
+    \begin{scope}[shift={(7, 0)}]
+      \draw (0, 0) node [transformer, name=trans] {};
+      \draw[thick, <-, >=stealth, blue] (trans-L1.south west) -- +(-0.5, 0.2) node [left] {L1.south west};
+      \draw[thick, <-, >=stealth, blue] (trans-L1.south) -- +(-0.5, 0) node [left] {L1.south};
+      \draw[thick, <-, >=stealth, blue] (trans-L1.south east) -- +(-0.5, -0.2) node [left] {L1.south east};
+      \draw[thick, <-, >=stealth, blue] (trans-L2.south west) -- +(0.5, -0.2) node [right] {L2.south west};
+      \draw[thick, <-, >=stealth, blue] (trans-L2.south) -- +(0.5, 0) node [right] {L2.south};
+      \draw[thick, <-, >=stealth, blue] (trans-L2.south east) -- +(0.5, 0.2) node [right] {L2.south east};
+    \end{scope}
+  \end{circuitikz}
+\end{center}
+
+\begin{center}
+  \begin{circuitikz}
+    \draw (0, 0) node [transformer, name=trans] {};
+    \draw[thick, <-, >=stealth, blue] (trans-L1.north west) -- +(0, 1) node [left] {L1.north west};
+    \draw[thick, <-, >=stealth, blue] (trans-L1.north) -- +(1, 0.5) node [right] {L1.north};
+    \draw[thick, <-, >=stealth, blue] (trans-L1.north east) -- +(0, -1) node [left] {L1.north east};
+    \draw[thick, <-, >=stealth, blue] (trans-L2.north west) -- +(0, -1) node [right] {L2.north west};
+    \draw[thick, <-, >=stealth, blue] (trans-L2.north) -- +(-1, -0.5) node [left] {L2.north};
+    \draw[thick, <-, >=stealth, blue] (trans-L2.north east) -- +(0, 1) node [right] {L2.north east};
+
+    \begin{scope}[shift={(7, 0)}]
+      \draw (0, 0) node [transformer, name=trans] {};
+      \draw[thick, <-, >=stealth, blue] (trans-L1.east) -- +(-0.5, 0.2) node [left] {L1.east};
+      \draw[thick, <-, >=stealth, blue] (trans-L1.west) -- +(-0.5, -0.2) node [left] {L1.west};
+      \draw[thick, <-, >=stealth, blue] (trans-L2.east) -- +(0.5, -0.2) node [right] {L2.east};
+      \draw[thick, <-, >=stealth, blue] (trans-L2.west) -- +(0.5, 0.2) node [right] {L2.west};
+      \draw[thick, <-, >=stealth, blue] (trans-L1.a) -- +(-0.5, -0.2) node [left] {L1.a};
+      \draw[thick, <-, >=stealth, blue] (trans-L1.b) -- +(-0.5, 0.2) node [left] {L1.b};
+      \draw[thick, <-, >=stealth, blue] (trans-L2.a) -- +(0.5, 0.2) node [right] {L2.a};
+      \draw[thick, <-, >=stealth, blue] (trans-L2.b) -- +(0.5, -0.2) node [right] {L2.b};
+    \end{scope}
+  \end{circuitikz}
+\end{center}
+
+\subsection{スイッチ}
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [opening switch] (2, 0) node [right] {\texttt{opening switch}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [opening switch] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [closing switch] (2, 0) node [right] {\texttt{closing switch}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [closing switch] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [cute open switch] (2, 0) node [right] {\texttt{cute open switch}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [cute open switch] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [cute closed switch] (2, 0) node [right] {\texttt{cute closed switch}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [cute closed switch] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [cute opening switch] (2, 0);
+    \draw (0, -0.5) node [right] {\texttt{cute opening switch}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [cute opening switch] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) to [cute closing switch] (2, 0);
+    \draw (0, -0.5) node [right] {\texttt{cute closing switch}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) to [cute closing switch] (2, 0);
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) node [cute spdt up, name=Sw] {};
+    \draw[thick, <-, >=stealth, blue] (Sw.in) -- +(0, 0.3) node [above] {in};
+    \draw[thick, <-, >=stealth, blue] (Sw.out 1) -- +(0.5, 0) node [right] {out 1};
+    \draw[thick, <-, >=stealth, blue] (Sw.out 2) -- +(0.5, 0) node [right] {out 2};
+    \draw (2, 0) node [right] {\texttt{cute spdt up}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) node [cute spdt up] {};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) node [cute spdt mid, name=Sw] {};
+    \draw[thick, <-, >=stealth, blue] (Sw.in) -- +(0, 0.3) node [above] {in};
+    \draw[thick, <-, >=stealth, blue] (Sw.out 1) -- +(0.5, 0) node [right] {out 1};
+    \draw[thick, <-, >=stealth, blue] (Sw.out 2) -- +(0.5, 0) node [right] {out 2};
+    \draw (2, 0) node [right] {\texttt{cute spdt mid}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) node [cute spdt mid] {};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) node [cute spdt down, name=Sw] {};
+    \draw[thick, <-, >=stealth, blue] (Sw.in) -- +(0, 0.3) node [above] {in};
+    \draw[thick, <-, >=stealth, blue] (Sw.out 1) -- +(0.5, 0) node [right] {out 1};
+    \draw[thick, <-, >=stealth, blue] (Sw.out 2) -- +(0.5, 0) node [right] {out 2};
+    \draw (2, 0) node [right] {\texttt{cute spdt down}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) node [cute spdt down] {};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) node [cute spdt up arrow, name=Sw] {};
+    \draw[thick, <-, >=stealth, blue] (Sw.in) -- +(0, 0.3) node [above] {in};
+    \draw[thick, <-, >=stealth, blue] (Sw.out 1) -- +(0.5, 0) node [right] {out 1};
+    \draw[thick, <-, >=stealth, blue] (Sw.out 2) -- +(0.5, 0) node [right] {out 2};
+    \draw (1, 0) node [right] {\texttt{cute spdt up arrow}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) node [cute spdt up arrow] {};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) node [cute spdt mid arrow, name=Sw] {};
+    \draw[thick, <-, >=stealth, blue] (Sw.in) -- +(0, 0.3) node [above] {in};
+    \draw[thick, <-, >=stealth, blue] (Sw.out 1) -- +(0.5, 0) node [right] {out 1};
+    \draw[thick, <-, >=stealth, blue] (Sw.out 2) -- +(0.5, 0) node [right] {out 2};
+    \draw (1, 0) node [right] {\texttt{cute spdt mid arrow}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) node [cute spdt mid arrow] {};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+
+\begin{minipage}{0.35\hsize}
+  \begin{circuitikz}
+    \draw (0, 0) node [cute spdt down arrow, name=Sw] {};
+    \draw[thick, <-, >=stealth, blue] (Sw.in) -- +(0, 0.3) node [above] {in};
+    \draw[thick, <-, >=stealth, blue] (Sw.out 1) -- +(0.5, 0) node [right] {out 1};
+    \draw[thick, <-, >=stealth, blue] (Sw.out 2) -- +(0.5, 0) node [right] {out 2};
+    \draw (1, 0) node [right] {\texttt{cute spdt down arrow}};
+  \end{circuitikz}
+\end{minipage}
+\begin{minipage}{0.6\hsize}
+  \begin{lstlisting}
+    \begin{circuitikz}
+      \draw (0, 0) node [cute spdt down arrow] {};
+    \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\section{サンプル}
+\subsection{トランス回路}
+\begin{circuitikz}
+  \ctikzset{transformer L1/.style={inductors/coils=6, inductors/width=1.0}}
+  \ctikzset{transformer L2/.style={inductors/coils=10, inductors/width=1.0}}
+  \draw (0, 0) node [transformerNL core, name=trans] {};
+  \coordinate (UL) at ($ (trans.A1) + (-3, 0) $);
+  \coordinate (DL) at ($ (trans.A2) + (-3, 0) $);
+  \coordinate (UR) at ($ (trans.B1) + (3, 0) $);
+  \coordinate (DR) at ($ (trans.B2) + (3, 0) $);
+  \draw (trans.A1) to [R, l^=$R_1$, f_<=$i_1$, *-] (UL) to [sinusoidal voltage source, l_=$V_0\sin\omega t$] (DL) to [short, -*] (trans.A2);
+  \draw (trans.B1) to [short, f>^=$i_2$, *-] (UR) to [R, l=$R_2$] (DR) to [cute closed switch, -*] (trans.B2);
+  \draw (trans.A1) node [above] {a};
+  \draw (trans.A2) node [below] {b};
+  \draw (trans.B1) node [above] {c};
+  \draw (trans.B2) node [below] {d};
+\end{circuitikz}
+
+\bigskip
+
+\begin{lstlisting}
+  \begin{circuitikz}
+    \ctikzset{transformer L1/.style={inductors/coils=6, inductors/width=1.0}}
+    \ctikzset{transformer L2/.style={inductors/coils=10, inductors/width=1.0}}
+    \draw (0, 0) node [transformerNL core, name=trans] {};
+    \coordinate (UL) at ($ (trans.A1) + (-3, 0) $);
+    \coordinate (DL) at ($ (trans.A2) + (-3, 0) $);
+    \coordinate (UR) at ($ (trans.B1) + (3, 0) $);
+    \coordinate (DR) at ($ (trans.B2) + (3, 0) $);
+    \draw (trans.A1) to [R, l^=$R_1$, f_<=$i_1$, *-] (UL) to [sinusoidal voltage source, l_=$V_0\sin\omega t$] (DL) to [short, -*] (trans.A2);
+    \draw (trans.B1) to [short, f>^=$i_2$, *-] (UR) to [R, l=$R_2$] (DR) to [cute closed switch, -*] (trans.B2);
+    \draw (trans.A1) node [above] {a};
+    \draw (trans.A2) node [below] {b};
+    \draw (trans.B1) node [above] {c};
+    \draw (trans.B2) node [below] {d};
+  \end{circuitikz}
+\end{lstlisting}
+
+\newpage
+
+\subsection{コンデンサー回路１}
+
+\begin{circuitikz}
+  \draw (0, 0) to [battery1, l=$V$] (0, -2) to [short] (4, -2);
+  \draw (0, 0) to [cute open switch=S$_1$] (2,0) to [cute closed switch=S$_2$] (4,0);
+  \drawCapa[u]{(2, -2)}{(2, 0)}{$C_1$}{$Q_1$}
+  \drawCapa[d]{(4, -2)}{(4, 0)}{$C_2$}{$Q_2$}
+\end{circuitikz}
+
+\bigskip
+
+\begin{lstlisting}
+  \begin{circuitikz}
+    \draw (0, 0) to [battery1, l=$V$] (0, -2) to [short] (4, -2);
+    \draw (0, 0) to [cute open switch=S$_1$] (2,0) to [cute closed switch=S$_2$] (4,0);
+    \drawCapa[u]{(2, -2)}{(2, 0)}{$C_1$}{$Q_1$}
+    \drawCapa[d]{(4, -2)}{(4, 0)}{$C_2$}{$Q_2$}
+  \end{circuitikz}
+\end{lstlisting}
+
+% \newpage
+
+\subsection{コンデンサー回路２}
+\begin{circuitikz}
+  \draw (0, 0) node [ground] {} node [left] {G} to [battery2, name=battery, invert, *-] (0, 4) to [cute open switch, l=S$_1$, -*] (2, 4) to [cute open switch, l=S$_2$] (4, 4) to [R, l=R, -*] (6, 4) node [above right] {A} to [capacitor, l=C$_1$, -*] (6, 2) to [capacitor, l=C$_2$] (6, 0) to [short, -*] (2, 0) to (0, 0);
+  \draw (2, 0) to [short, -*] (2, 2) to [capacitor, l^=C$_0$] (2, 4);
+  \draw (2, 2) to [cute open switch, l_=S$_3$] (6, 2);
+  \draw (battery.north east) node {E};
+\end{circuitikz}
+
+\begin{lstlisting}
+  \begin{circuitikz}
+    \draw (0, 0) node [ground] {} node [left] {G} to [battery2, name=battery, invert, *-] (0, 4) to [cute open switch, l=S$_1$, -*] (2, 4) to [cute open switch, l=S$_2$] (4, 4) to [R, l=R, -*] (6, 4) node [above right] {A} to [capacitor, l=C$_1$, -*] (6, 2) to [capacitor, l=C$_2$] (6, 0) to [short, -*] (2, 0) to (0, 0);
+    \draw (2, 0) to [short, -*] (2, 2) to [capacitor, l^=C$_0$] (2, 4);
+    \draw (2, 2) to [cute open switch, l_=S$_3$] (6, 2);
+    \draw (battery.north east) node {E};
+  \end{circuitikz}
+\end{lstlisting}
+
+\newpage
+
+\subsection{ダイオード回路}
+\begin{circuitikz}[american voltages]
+  \draw (0, 0) node [ground] {} to [sinusoidal voltage source, v^<={\null}] (0, 3) to (1.5, 3);
+  \draw (1.5, 3) to [stroke diode, invert, xf=\relax] (3, 4.5) to [stroke diode] (4.5, 3) to [stroke diode] (3, 1.5) to [stroke diode, invert] (1.5, 3);
+  \draw (4.5, 3) to (5, 3) to (5, 0) to (0, 0);
+  \draw (3, 1.5) to (4.5, 1.5) to [crossing] (5.5, 1.5) node [right] {b} to [R, l_=R] (5.5, 4.5) node [right] {a} to (3, 4.5);
+\end{circuitikz}
+
+\begin{lstlisting}
+  \begin{circuitikz}[american voltages]
+    \draw (0, 0) node [ground] {} to [sinusoidal voltage source, v^<={\null}] (0, 3) to (1.5, 3);
+    \draw (1.5, 3) to [stroke diode, invert, xf=\relax] (3, 4.5) to [stroke diode] (4.5, 3) to [stroke diode] (3, 1.5) to [stroke diode, invert] (1.5, 3);
+    \draw (4.5, 3) to (5, 3) to (5, 0) to (0, 0);
+    \draw (3, 1.5) to (4.5, 1.5) to [crossing] (5.5, 1.5) node [right] {b} to [R, l_=R] (5.5, 4.5) node [right] {a} to (3, 4.5);
+  \end{circuitikz}
+\end{lstlisting}
+
+\newpage
+
+\section{参考}
+素子等は以下のファイルで定義される．
+新しい素子を作る際の参考に．
+kpsewhichで開ける．
+
+\begin{itemize}
+  \item ctikzstyle-example.tex
+  \item pgfcircflow.tex
+  \item pgfcircshapes.tex
+  \item ctikzstyle-legacy.tex
+  \item pgfcirclabel.tex
+  \item pgfcirctripoles.tex
+  \item ctikzstyle-romano.tex
+  \item pgfcircmonopoles.tex
+  \item pgfcircutils.tex
+  \item pgfcirc.defines.tex
+  \item pgfcircmultipoles.tex
+  \item pgfcircvoltage.tex
+  \item pgfcircbipoles.tex
+  \item pgfcircpath.tex
+  \item pgfcirccurrent.tex
+  \item pgfcircquadpoles.tex
+\end{itemize}
+
+\end{document}

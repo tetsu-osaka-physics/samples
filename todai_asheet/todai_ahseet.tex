@@ -1,0 +1,180 @@
+\documentclass[a5paper, papersize, dvipdfmx]{jsarticle}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\setlength{\oddsidemargin}{0truept}
+\setlength{\topmargin}{0truept}
+
+\setlength{\headheight}{0truept}
+\setlength{\headsep}{0truept}
+
+\setlength{\textheight}{208truemm}
+\setlength{\textwidth}{148truemm}
+
+\setlength{\hoffset}{-1in}
+\setlength{\voffset}{-1in}
+
+\setlength{\parindent}{0truept}
+\def\baselength{1/3}
+
+\makeatletter
+\newcommand\UTouterframe{\@ifstar{\@@UTouterframe}{\@UTouterframe}}
+\newcommand\@UTouterframe[1][0]{%
+  \draw[very thick] (1.8,0)--(1.8,-20.5);%
+  \draw[very thick] (0,-1.4)--(14,-1.4);%
+  % \draw[dashed] (0,-20)--(14,-20);%
+  % \draw (7,-20) node [below] {B4境界線};%
+  \draw (2.35,-0.85) node {\Large 前} circle [radius=0.38];%
+  \foreach \i in {3, ..., 6}%
+    \draw[dashed] (\i+0.2,0)--(\i+0.2,-0.6) arc [radius=0.4, start angle = 180, end angle=360] --(\i+1,0);%
+  \foreach \i in {3, ..., 6}%
+    \draw (\i+0.6,-0.4) node [below] {\tiny\rotatebox{180}{ここを}};%
+  \foreach \i in {3, ..., 6}%
+    \draw (\i+0.6,-0.4) node {\tiny\rotatebox{180}{切り取る}};%
+  \draw (3.6,-1.2) node {\tiny\rotatebox{180}{地学}};%
+  \draw (4.6,-1.2) node {\tiny\rotatebox{180}{生物}};%
+  \draw (5.6,-1.2) node {\tiny\rotatebox{180}{化学}};%
+  \draw (6.6,-1.2) node {\tiny\rotatebox{180}{物理}};%
+  \ifnum#1=0\else\fill (7.2-#1,0)--(7.2-#1,-0.6) arc [radius=0.4, start angle = 180, end angle=360] --(8-#1,0)--cycle;\fi
+  \draw[thick] (7.5,-1.2) rectangle (13.5,-0.5);%
+  \draw (7.7,-0.85) node {\scriptsize\shortstack[l]{科\\類}};%
+  \draw (7.9,-0.5)--(7.9,-1.2);%
+  \draw (8.8,-0.85) node {\scriptsize{理　科　　　類}};%
+  \draw (9.8,-0.5)--(9.8,-1.2);%
+  \draw (10,-0.85) node {\scriptsize\shortstack[l]{氏\\名}};%
+  \draw (10.2,-0.5)--(10.2,-1.2);%
+  \draw (9.5,-0.3) node {\tiny\rotatebox{180}{\textbf{注意}：この解答用紙で解答する科目の分を正しく切り取れ。}};%
+  % \draw (4,-1.9) node {\Large 理　科};
+  }
+
+\newcommand\@@UTouterframe[1][0]{%
+  \draw[very thick] (12.95,0)--(12.95,-20.5);%
+  \draw[very thick] (0,-1.4)--(14,-1.4);%
+  % \draw[dashed] (0,-20)--(14,-20);%
+  % \draw (7,-20) node [below] {B4境界線};%
+  \begin{scope}[xshift=-1.15cm]%
+    \draw (2.35,-0.85) node {\Large 前} circle [radius=0.38];%
+    \foreach \i in {3, ..., 6}%
+      \draw[dashed] (\i+0.2,0)--(\i+0.2,-0.6) arc [radius=0.4, start angle = 180, end angle=360] --(\i+1,0);%
+    \foreach \i in {3, ..., 6}%
+      \draw (\i+0.6,-0.4) node [below] {\tiny\rotatebox{180}{ここを}};%
+    \foreach \i in {3, ..., 6}%
+      \draw (\i+0.6,-0.4) node {\tiny\rotatebox{180}{切り取る}};%
+    \draw (3.6,-1.2) node {\tiny\rotatebox{180}{地学}};%
+    \draw (4.6,-1.2) node {\tiny\rotatebox{180}{生物}};%
+    \draw (5.6,-1.2) node {\tiny\rotatebox{180}{化学}};%
+    \draw (6.6,-1.2) node {\tiny\rotatebox{180}{物理}};%
+    \ifnum#1=0\else\fill (7.2-#1,0)--(7.2-#1,-0.6) arc [radius=0.4, start angle = 180, end angle=360] --(8-#1,0)--cycle;\fi
+    \draw[thick] (7.5,-1.2) rectangle (13.5,-0.5);%
+    \draw (7.7,-0.85) node {\scriptsize\shortstack[l]{科\\類}};%
+    \draw (7.9,-0.5)--(7.9,-1.2);%
+    \draw (8.8,-0.85) node {\scriptsize{理　科　　　類}};%
+    \draw (9.8,-0.5)--(9.8,-1.2);%
+    \draw (10,-0.85) node {\scriptsize\shortstack[l]{氏\\名}};%
+    \draw (10.2,-0.5)--(10.2,-1.2);%
+    \draw (9.5,-0.3) node {\tiny\rotatebox{180}{\textbf{注意}：この解答用紙で解答する科目の分を正しく切り取れ。}};%
+    % \draw (4,-1.9) node {\Large 理　科};
+  \end{scope}}
+
+\newcommand\UTansframe{\@ifstar{\@@UTansframe}{\@UTansframe}}
+\newcommand\@UTansframe[5]{%
+  % #1 -> x of start
+  % #2 -> y of start
+  % #3 -> num of columns
+  % #4 -> num of rows
+  \pgfmathsetmacro\fiv@colnum{ceil(#3/5)-1}%
+  \pgfmathsetmacro\fiv@rownum{ceil(#4/5)-1}%
+  \draw[thick] (#1, #2) rectangle (#1+\baselength*#3, #2-\baselength*#4);%
+  \draw[thick] (0, #2-\baselength*#4+1.7) rectangle (1.5, #2-\baselength*#4+\baselength);%
+  \draw (0.4, #2-\baselength*#4+1.7)--(0.4, #2-\baselength*#4+\baselength);%
+  \draw (0.2, #2-\baselength*#4+1) node {\scriptsize\shortstack[l]{#5\\[.2zw]点\\[-.2zw]数}};%
+  \draw[thick] (#1, #2-2*\baselength)--(#1+3*\baselength, #2-2*\baselength)--(#1+3*\baselength, #2);%
+  \draw (#1+1.5*\baselength, #2-\baselength) node {\tiny 第\normalsize #5\tiny 問};%
+  \foreach \i in {1, 2} % 1st and 2nd lines (short, dotted)
+    \draw[dotted] (#1+3*\baselength, #2-\i*\baselength)--(#1+\baselength*#3, #2-\i*\baselength);%
+  \foreach \i in {3, 4} % 3rd and 4th lines (dotted)
+    \draw[dotted] (#1, #2-\i*\baselength)--(#1+\baselength*#3, #2-\i*\baselength);%
+  \pgfmathsetmacro\lin@num{#4-1}%
+  \foreach \i in {0, ..., \fiv@rownum} % long lines at (*, 5i)
+    \draw (#1, #2-5*\baselength*\i) -- (#1+\baselength*#3, #2-5*\baselength*\i);%
+  \foreach \i in {1, ..., \fiv@rownum} % long dotted lines at (*, 5i+j)
+    \foreach \j in {1, ..., 4}%
+      \draw[dotted] (#1, #2-5*\baselength*\i-\baselength*\j) -- (#1+\baselength*#3, #2-5*\baselength*\i-\baselength*\j);%
+  \foreach \i in {0, ..., \fiv@rownum} % big scale at (5j, 5i)
+    \foreach \j in {1, ..., \fiv@colnum}%
+      \draw (#1+5*\baselength*\j, #2-5*\baselength*\i)--(#1+5*\baselength*\j, #2-0.1-5*\baselength*\i);%
+  \draw (#1+4*\baselength, #2)--(#1+4*\baselength, #2-0.05);% small scale at (3, 0)
+  \foreach \i in {1, ..., \fiv@colnum} % small scale at (5i+j, 0)
+    \foreach \j in {1, ...,4}%
+      \pgfmathsetmacro\scp@int{(5*\i)+\j}%
+      \draw ({#1+\baselength*\scp@int}, #2)--({#1+\baselength*\scp@int}, #2-0.05);%
+  \foreach \i in {1, ..., \fiv@rownum} % small scale at (5j+k, 5i)
+    \foreach \j in {0, ..., \fiv@colnum}%
+      \foreach \k in {1, ..., 4}%
+        \pgfmathsetmacro\scp@int{(5*\j)+\k}%
+        \draw ({#1+\baselength*\scp@int}, #2-5*\baselength*\i)--({#1+\baselength*\scp@int}, #2-0.05-5*\baselength*\i);}
+
+\newcommand\@@UTansframe[5]{%
+  % #1 -> x of start
+  % #2 -> y of start
+  % #3 -> num of columns
+  % #4 -> num of rows
+  \pgfmathsetmacro\fiv@colnum{ceil(#3/5)-1}%
+  \pgfmathsetmacro\fiv@rownum{ceil(#4/5)-1}%
+  \begin{scope}[xshift=-1.15cm]%
+    \draw[thick] (#1, #2) rectangle (#1+\baselength*#3, #2-\baselength*#4);%
+  \end{scope}%
+  \begin{scope}[xshift=13.25cm]%
+    \draw[thick] (0, #2-\baselength*#4+1.7) rectangle (1.5, #2-\baselength*#4+\baselength);%
+    \draw (0.4, #2-\baselength*#4+1.7)--(0.4, #2-\baselength*#4+\baselength);%
+    \draw (0.2, #2-\baselength*#4+1) node {\scriptsize\shortstack[l]{#5\\[.2zw]点\\[-.2zw]数}};%
+  \end{scope}%
+  \begin{scope}[xshift=-1.15cm]%
+    \draw[thick] (#1, #2-2*\baselength)--(#1+3*\baselength, #2-2*\baselength)--(#1+3*\baselength, #2);%
+    \draw (#1+1.5*\baselength, #2-\baselength) node {\tiny 第\normalsize #5\tiny 問};%
+    \foreach \i in {1, 2} % 1st and 2nd lines (short, dotted)
+      \draw[dotted] (#1+3*\baselength, #2-\i*\baselength)--(#1+\baselength*#3, #2-\i*\baselength);%
+    \foreach \i in {3, 4} % 3rd and 4th lines (dotted)
+      \draw[dotted] (#1, #2-\i*\baselength)--(#1+\baselength*#3, #2-\i*\baselength);%
+    \pgfmathsetmacro\lin@num{#4-1}%
+    \foreach \i in {0, ..., \fiv@rownum} % long lines at (*, 5i)
+      \draw (#1, #2-5*\baselength*\i) -- (#1+\baselength*#3, #2-5*\baselength*\i);%
+    \foreach \i in {1, ..., \fiv@rownum} % long dotted lines at (*, 5i+j)
+      \foreach \j in {1, ..., 4}%
+        \draw[dotted] (#1, #2-5*\baselength*\i-\baselength*\j) -- (#1+\baselength*#3, #2-5*\baselength*\i-\baselength*\j);%
+    \foreach \i in {0, ..., \fiv@rownum} % big scale at (5j, 5i)
+      \foreach \j in {1, ..., \fiv@colnum}%
+        \draw (#1+5*\baselength*\j, #2-5*\baselength*\i)--(#1+5*\baselength*\j, #2-0.1-5*\baselength*\i);%
+    \draw (#1+4*\baselength, #2)--(#1+4*\baselength, #2-0.05);% % small scale at (3, 0)
+    \foreach \i in {1, ..., \fiv@colnum} % small scale at (5i+j, 0)
+      \foreach \j in {1, ...,4}%
+        \pgfmathsetmacro\scp@int{(5*\i)+\j}%
+        \draw ({#1+\baselength*\scp@int}, #2)--({#1+\baselength*\scp@int}, #2-0.05);%
+    \foreach \i in {1, ..., \fiv@rownum} % small scale at (5j+k, 5i)
+      \foreach \j in {0, ..., \fiv@colnum}%
+        \foreach \k in {1, ..., 4}%
+          \pgfmathsetmacro\scp@int{(5*\j)+\k}%
+          \draw ({#1+\baselength*\scp@int}, #2-5*\baselength*\i)--({#1+\baselength*\scp@int}, #2-0.05-5*\baselength*\i);
+  \end{scope}}
+\makeatother
+
+\pagestyle{empty}
+\begin{document}
+\begin{tikzpicture}
+  % \UTouterframe % 塗りなし
+  \UTouterframe[1] % 物理
+  % \UTouterframe[2] % 化学
+  % \UTouterframe[3] % 生物
+  % \UTouterframe[4] % 地学
+  \UTansframe{2.12}{-2}{35}{25}{１}
+  \UTansframe{2.12}{-10.9}{35}{25}{２}
+\end{tikzpicture}
+
+\newpage
+
+\begin{tikzpicture}
+  \UTouterframe*[4]
+  \UTansframe*{2.12}{-2}{35}{50}{３}
+\end{tikzpicture}
+
+\end{document}
