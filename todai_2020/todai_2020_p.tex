@@ -1,0 +1,686 @@
+\documentclass[b5paper, papersize, fleqn, 11pt, dvipdfmx, bold, nodots]{jsarticle}
+\usepackage{todai_p}
+\begin{document}
+\begin{center}
+  {\large 計　算　用　紙}\par
+  （切り離さないで用いよ。）
+\end{center}
+
+\newpage
+
+\begin{center}
+  {\large 計　算　用　紙}\par
+  （切り離さないで用いよ。）
+\end{center}
+
+\newpage
+
+\begin{center}
+  {\Large\textbf{物　　　　　　理}}
+\end{center}
+\bigskip
+\section\relax\fstyle{Kata}
+$xy$平面内で運動する質量$m$の小球を考える。小球の各時刻における位置，速度，加速度，および小球にはたらく力のベクトルをそれぞれ
+\makeatletter\@fleqnfalse\makeatother
+\[\overrightarrow{r}=(x,\,y),\,\overrightarrow{v}=(v_x,\,v_y),\,\overrightarrow{F}=(F_x,\,F_y)\]
+\makeatletter\@fleqntrue\makeatother
+とする。また小球の各時刻における原点Oからの距離を$r=\sqrt{x^2+y^2}$，速度の大きさを$v=\sqrt{v_x{}^2+v_y{}^2}$とする。以下の設問に答えよ。なお小球の大きさは無視できるものとする。
+\begin{enumerate}[label=\Roman*]
+  \item\label{p1.1}{}\relax\empty
+  \begin{enumerate}[label=\Kakko*]
+    \item\label{p1.1.1} 以下の文中の\f{1}から\f{6}に当てはまるものを$v_x$, $v_y$, $a_x$, $a_y$から選べ。
+
+    各時刻において原点Oと小球を結ぶ線分が描く面積速度は
+    \[A_v=\frac{1}{2}(xv_y-yv_x)\]
+    で与えられる。ある時刻における位置および速度ベクトルが
+    \[\overrightarrow{r}=(x,\,y),\quad\overrightarrow{v}=(v_x,\,v_y)\]
+    であったとき，それらは微小時間$\varDelta t$たった後にそれぞれ
+    \begin{align*}
+      \overrightarrow{r{}'} &= (x+\f{}\varDelta t,\,y+\f{}\varDelta t)\\
+      \overrightarrow{v'} &=(v_x+\f{}\varDelta t,\,v_y+\f{}\varDelta t)
+    \end{align*}
+    に変化する。このことを用いると，微小時間$\varDelta t$における面積速度の変化分は
+    \[\varDelta A_v=\frac{1}{2}(x\f{}-y\f{}{})\varDelta t\]
+    で与えられる。なお$(\varDelta t)^2$に比例した面積速度の変化分は無視する。
+
+    \item\label{p1.1.2} 設問\ref{p1.1}\ref{p1.1.1}の結果を用いて，面積速度が時間変化しないためには力$\overrightarrow{F}$の成分$F_x$, $F_y$がどのような条件を満たせばよいか答えよ。
+    ただし小球は原点Oから離れた点にあり，力は零ベクトルではないとする。
+
+    \newpage
+
+    \item 設問\ref{p1.1}\ref{p1.1.2}の力$\overrightarrow{F}$を受けながら，小球が図\ref{1.1}の半径$r_0$の円周上を点Aから点Bを通って点Cまで運動したとする。
+    このとき，力$\overrightarrow{F}$が点Aから点Bまでに小球に行う仕事と点Aから点Cまでに小球が行う仕事の大小関係を，理由を含めて答えよ。
+
+    \begin{figure}[ht]
+      \centering
+      \begin{tikzpicture}
+        \draw[-to] (-3,0) -- (3,0);
+        \draw (3,0) node [right] {$x$};
+        \draw (0,3) node [above] {$y$};
+        \draw[-to] (0,-3) -- (0,3);
+        \draw (0,0) circle [radius=2];
+        \draw (0,0) node [below left] {O};
+        \fill (2,0) circle [radius=0.1];
+        \draw (2,0) node [above right] {A};
+        \fill (0,2) circle [radius=0.1];
+        \draw (0,2) node [above right] {B};
+        \fill (-2,0) circle [radius=0.1];
+        \draw (-2,0) node [above left] {C};
+        \fill (0,0) circle [radius=0.1];
+        \draw[->] (0,0)--(45:2);
+        \draw (45:1) node (45:1) [below right] {$r_0$};
+      \end{tikzpicture}
+      \caption{}
+      \label{1.1}
+    \end{figure}
+  \end{enumerate}
+
+  \newpage
+
+  \item\label{p1.2}
+  \begin{enumerate}[label=\Kakko*]
+    \item 小球の原点Oからの距離$r$の時間変化率は
+    \[v_r=\frac{xv_x+yv_y}{r}\]
+    で与えられる。これを動径方向速度とよぶ。このとき，小球の運動エネルギーと
+    \[K_r=\frac{1}{2}mv_r{}^2\]
+    との差を$m$, $r$および面積速度$A_v$を用いた式で表せ。
+
+    \item\label{p1.2.2} 面積速度が一定になる力$\overrightarrow{F}$の例として万有引力を考える。
+    原点Oに質量$M$の物体があるとする。このとき万有引力による小球の位置エネルギーは
+    \begin{align}
+      U=-G\frac{mM}{r}\label{eq1.1}
+    \end{align}
+    で与えられる（$G$は万有引力定数）。ただし物体の質量$M$は小球の質量$m$と比べてはるかに大きいため，物体は原点Oに静止していると考えてよい。
+    小球の面積速度$A_v$が$0$でないある定数値$A_0$をとるとき，力学的エネルギーが最小となる運動はどのような運動になるか答えよ。
+    また，その時の力学的エネルギーの値を$m$, $M$, $A_0$, $G$を用いて表せ。
+  \end{enumerate}
+
+  \newpage
+
+  \begin{center}
+    {\large 計　算　用　紙}\par
+    （切り離さないで用いよ。）
+  \end{center}
+
+  \newpage
+
+  \setlength\itemindent{1zw}
+  \item\label{p1.3} ボーアの水素原子模型では電子の円軌道の円周$2\pi r$とド・ブロイ波長$\lambda$の間に量子条件
+  \[2\pi r=n\lambda\qquad(n=1,\,2,\,3,\,\cdots)\]
+  が成り立つ。以下で考える小球の円運動に対しても同じ量子条件が成り立つと仮定する。
+
+  \begin{enumerate}[label=\Kakko*]
+    \item\label{p1.3.1} 設問\ref{p1.2}\ref{p1.2.2}の\eqref{eq1.1}に対応する万有引力がはたらく小球の円運動を考える。
+    各$n$について，量子条件を満たす円軌道の半径$r_n$を$n$, $h$, $m$, $M$, $G$を用いた式で表せ。
+    ただし小球のド・ブロイ波長$\lambda$は，小球の速度の大きさ$v$を用いて$\lambda=\dfrac{h}{mv}$で与えられる（$h$はプランク定数）。
+
+    \item 宇宙には暗黒物質という物質が存在し，銀河の暗黒物質は銀河中心からおよそ$R=10^{22}$\,mの半径内に集まっていると考えられている。
+    暗黒物質が未知の粒子によって構成されていると仮定し，設問\ref{p1.3}\ref{p1.3.1}の結果を用いてその粒子の質量に下限を与えてみよう。
+    暗黒物質の構成粒子を\eqref{eq1.1}に対応する万有引力を受けながら円運動する小球として近似する。
+    設問\ref{p1.3}\ref{p1.3.1}で考えたボーアの量子条件を満たす小球の軌道半径のうち$n=1$としたものが$R=10^{22}$\,mと等しいとしたときの小球の質量を求めよ。
+
+    なお銀河の全質量は銀河中心に集まっていて動かないと近似し，その値を$M\fallingdotseq10^{42}$\,kgとする。
+    また，$G\fallingdotseq10^{-10}\,\mathrm{m^3/(kg\cdot s^2)}$, $\dfrac{h}{2\pi}\fallingdotseq10^{-34}\,\mathrm{m^2\cdot kg/s}$と近似してよい。
+    この設問で求めた質量が暗黒物質を構成する１粒子の質量のおおまかな下限となる。
+  \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\begin{center}
+  {\large 計　算　用　紙}\par
+  （切り離さないで用いよ。）
+\end{center}
+
+\newpage
+
+\begin{center}
+  {\large 計　算　用　紙}\par
+  （切り離さないで用いよ。）
+\end{center}
+
+\newpage
+
+\begin{center}
+  {\large 計　算　用　紙}\par
+  （切り離さないで用いよ。）
+\end{center}
+
+\newpage
+
+\section\relax\fstyle{Kata}
+\begin{enumerate}[label=\Roman*, itemindent=1zw]
+  \item\label{p2.1} 図\ref{2.1}のように，水平面上に置かれた２本の長い導線レールの上に，質量$m$の導体棒が垂直に渡してある。
+  磁束密度の大きさ$B$の一様な磁場が全空間で鉛直方向（紙面に垂直方向）にかけられている。
+  導体棒とレールの接点をX, Yと呼ぶ。また，導体棒はレール方向にのみ動けるものとし，摩擦や空気抵抗，導体棒の両端に発生する誘導電荷，および回路を流れる電流が作る磁場の影響は無視できるものとする。
+
+  図\ref{2.1}のように，間隔$d$の平行なレールの端に電池（起電力$V_0$），抵抗（抵抗値$R$），スイッチを取り付け，導体棒を静止させる。
+  スイッチを閉じた後の様子について，以下の設問\ref{p2.1.1}〜\ref{p2.1.5}に答えよ。
+
+  \begin{figure}[ht]
+    \centering
+    \begin{circuitikz}[european]
+      \draw (3,0.5) to [short, *-] (3,1.2) to [battery1, a=電池（起電力$V_0$）] (0,1.2) to [R=抵抗（抵抗値$R$）] (0,-1.2) to [normal open switch=スイッチ, invert] (3,-1.2) to [short, -*] (3,-0.5);
+      \draw[thick] (3,0.5) -- (10,0.5);
+      \draw[thick] (3,-0.5) -- (10,-0.5);
+      \draw[very thick] (6,1.2) -- (6,-1.2);
+      \draw (8,-0.5) node [above] {磁束密度$B$};
+      \draw (6,0.9) node [right] {導体棒（質量$m$）};
+      \draw[<->] (4,0.5) -- (4,-0.5);
+      \draw (4,0) node [right] {$d$};
+      \draw (4,0.5) node [above] {レール};
+      \draw[->,>=stealth] (5.2,1) -- (5.9,0.6);
+      \draw (5.2,1.2) node [left] {接点X};
+      \draw[->,>=stealth] (5.2,-1) -- (5.9,-0.6);
+      \draw (5.2,-1.2) node [left] {接点Y};
+    \end{circuitikz}
+    \caption{（上から見た図）}
+    \label{2.1}
+  \end{figure}
+
+  \begin{enumerate}[label=\Kakko*, topsep=0zw]
+    \item\label{p2.1.1} 以下の文中の\f{1}〜\f{5}の空欄を埋めよ。
+    ただし，\f{1}，\f{4}，\f{5}には式を記入し，\f{2}，\f{3}にはそのあとの括弧内から適切な語句を選択せよ。
+
+    スイッチを閉じると，回路に電流が流れ，導体棒は右向きに動きはじめた。
+    ある瞬間の電流を$I$とすると，導体棒には大きさ\f{}の力が働き加速されるからである。
+    このことから磁場の向きは，鉛直\f{}（上，下）向きであることがわかる。
+    導体棒が動くと，接点X, Y間には\f{}（X, Y）側を正とする誘導起電力が発生し，導体棒を流れる電流は小さくなる。
+    電池の起電力$V_0$と誘導起電力$V$の間に\f{}の関係が成り立つと，電流は流れなくなり，導体棒の速さは一定になる。
+    この一定の速さを以下では「到達速さ」と表記する。この場合の到達速さは\f{}で与えられる。
+
+    \newpage
+
+    \item\label{p2.1.2} 導体棒に電流$I$が流れているとき，微小時間$\varDelta t$の間に，導体棒の速さや接点X, Y間の起電力はどれだけ変化するか。
+    速さの変化量$\varDelta s$，起電力の変化量$\varDelta V$を，$B$,\,$d$,\,$I$,\,$m$,\,$R$,\,$\varDelta t$,\,$V_0$のうち必要なものを使ってそれぞれ求めよ。
+
+    \item\label{p2.1.3} スイッチを閉じてから導体棒が到達速さにいたるまでの間に，導体棒を流れる電気量を，$B$,\,$d$,\,$m$,\,$R$,\,$V_0$のうち必要なものを使って求めよ。
+
+    \item 設問\ref{p2.1.2}，\ref{p2.1.3}より，導体棒を流れる電流や電気量と接点X, Yの間に発生する起電力との関係が，コンデンサーを充電する際の電流や電気量と電圧の関係と類似していることがわかる。
+    スイッチを閉じてから導体棒が到達速さにいたるまでの間に，接点X, Yの起電力に逆らって電荷を運ぶのに要する仕事はいくらか。
+    設問\ref{p2.1.1}で求めた到達速さを$s_0$として，$B$,\,$d$,\,$m$,\,$R$,\,$s_0$のうち必要なものを使って求めよ。
+
+    \item\label{p2.1.5} 設問\ref{p2.1.3}で求めた電気量を$Q$とすると，スイッチを閉じてから導体棒が到達速さにいたるまでに電池がした仕事は$QV_0$で与えられる。
+    この電池がした仕事は，どのようなエネルギーに変わったか。その種類と量を全て答えよ。
+  \end{enumerate}
+
+  \newpage
+
+  \item 設問\ref{p2.1}の設定のもとで，導体棒が間隔$d$の平行なレール上を到達速さで右に移動している状態から，図\ref{2.2}のように，導体棒は間隔$2d$の平行なレール上に移動した。
+  以下の文の\f{6}〜\f{9}の空欄を埋めよ。
+
+  \bigskip
+
+  この間スイッチは閉じたままであった場合を考える。
+  このとき，間隔$2d$のレール上での到達速さは，間隔$d$のレール上での到達速さに比べて，\f{}倍になる。
+  また，それぞれの到達速さで移動しているときの接点X, Y間の起電力は，レール間隔が２倍になるのにともない，\f{}倍になる。
+
+  次に，導体棒が間隔$d$のレール上を到達速さで移動しているときにスイッチを切り，その後スイッチを切ったままの状態で，導体棒が間隔$2d$のレール上に移動した場合を考える。
+  このときは，レール間隔が２倍になるのにともない，到達速さは\f{}倍になり，接点X, Y間の起電力は\f{}倍になる。
+
+  \newpage
+
+  \begin{figure}[ht]
+    \centering
+      \begin{circuitikz}[european]
+        \draw (3,0.5) to [short, *-] (3,1.2) to [battery1, a=電池（起電力$V_0$）] (0,1.2) to [R=抵抗（抵抗値$R$）] (0,-1.2) to [switch=スイッチ, invert] (3,-1.2) to [short, -*] (3,-0.5);
+        \draw[thick] (3,0.5) to [wavy capacitor] (5,0.5) -- (6,0.5) -- (6.2,1) -- (10,1);
+        \draw[thick] (3,-0.5) to [wavy capacitor] (5,-0.5) -- (6,-0.5) -- (6.2,-1) -- (10,-1);
+        \draw[very thick] (7,1.2) -- (7,-1.2);
+        \draw (9,-1) node [above] {磁束密度$B$};
+        \draw (7,1.4) node [right] {導体棒（質量$m$）};
+        \draw[<->] (5,0.5) -- (5,-0.5);
+        \draw (5,0) node [right] {$d$};
+        \draw (9,1) node [below] {レール};
+        \draw[->,>=stealth] (6.2,1.5) -- (6.9,1.1);
+        \draw (6.2,1.7) node [left] {接点X};
+        \draw[->,>=stealth] (6.2,-1.5) -- (6.9,-1.1);
+        \draw (6.2,-1.7) node [left] {接点Y};
+        \draw[<->] (7.5,1) -- (7.5,-1);
+        \draw (7.5,0) node [right] {$2d$};
+      \end{circuitikz}
+    \caption{}
+    \label{2.2}
+  \end{figure}
+
+  \newpage
+
+  \item 図\ref{2.3}に示すように，間隔$d$の平行なレールと間隔$2d$の平行なレールを同線でつなぎ，設問\ref{p2.1}と同様に，電池，抵抗，スイッチを取り付けた。
+  磁場も設問\ref{p2.1}と同じとする。スイッチを切った状態で，図\ref{2.3}のように質量$m$の２つの導体棒１，２をそれぞれ間隔$d$，間隔$2d$のレール上に垂直に置き静止させたのち，スイッチを閉じたところ，導体棒１，２はともに右向きに動き始めた。
+  十分に時間が経ったのち，導体棒の速さは一定と見なせるようになった。
+  このときの導体棒１，２の速さを$B$,\,$d$,\,$m$,\,$R$,\,$V_0$のうち必要なものを使ってそれぞれ求めよ。
+
+  \newpage
+
+  \begin{figure}[ht]
+    \centering
+    \begin{circuitikz}[european]
+      \draw (3,2.5) to [battery1, a=電池（起電力$V_0$）, *-] (0,2.5) to [R=抵抗（抵抗値$R$）] (0,-2.5) to [normal open switch=スイッチ, invert, -*] (3,-2.5);
+      \draw (3,1.5) to [short, *-*] (3,-0.5);
+      \draw[thick] (3,2.5)  -- (10,2.5);
+      \draw[thick] (3,1.5)  -- (10,1.5);
+      \draw[thick] (3,-0.5)  -- (10,-0.5);
+      \draw[thick] (3,-2.5)  -- (10,-2.5);
+      \draw[very thick] (7,3.2) -- (7,0.8);
+      \draw[very thick] (7.5,-0.3) -- (7.5,-2.7);
+      \draw (9,2) node {磁束密度$B$};
+      \draw (9,-1.5) node {磁束密度$B$};
+      \draw (7,3.4) node [right] {導体棒１（質量$m$）};
+      \draw (7.5,-0.1) node [right] {導体棒２（質量$m$）};
+      \draw[<->] (5,2.5) -- (5,1.5);
+      \draw (5,2) node [right] {$d$};
+      \draw (5,2.5) node [above] {レール};
+      \draw[<->] (5,-0.5) -- (5,-2.5);
+      \draw (5,-1.5) node [right] {$2d$};
+      \draw (5,-0.5) node [above] {レール};
+    \end{circuitikz}
+    \caption{}
+    \label{2.3}
+  \end{figure}
+\end{enumerate}
+
+\newpage
+
+\begin{center}
+  {\large 計　算　用　紙}\par
+  （切り離さないで用いよ。）
+\end{center}
+
+\newpage
+
+\begin{center}
+  {\large 計　算　用　紙}\par
+  （切り離さないで用いよ。）
+\end{center}
+
+\newpage
+
+\section\relax
+図\ref{3.1}に示すように，容器X, Yにそれぞれ1モルの単原子分子理想気体が入っている。
+容器Xの上部は滑らかに動くピストンで閉じられており，ピストンの上にはおもりが載せられている。
+ピストンの質量は無視できる。容器Yの体積は一定である。
+容器の外は真空であり，容器Xと，容器Yまたは物体Zが接触した場合のにみ熱のやりとりが行われ，外部の真空や床などとの熱のやりとりは常に無視できるものとする。
+容器の熱容量は無視できる。また，物体Zの温度は常に$\dfrac{4}{5}T_\text{A}$に保たれているものとする。
+
+はじめ，容器Xは容器Yと接触しており，ピストンの上には質量$a^5\ (a>1)$のおもりが載せられている。
+容器X内の気体の圧力は$p_\text{A}$である。容器X, Y内の気体の温度はともに$T_\text{A}$である。
+このときの容器X内の気体の状態を状態Aと呼ぶことにする。続いて，図\ref{3.1}に示すように，以下の操作\ajMaru{1}〜\ajMaru{4}を順番に行い，容器X内の気体の状態を，$\mathrm{A\to B\to C\to D\to E}$と変化させた。
+これらの操作において，気体の状態変化はゆっくりと起こるものとする。
+気体定数を$R$とすると，状態A〜Dにおける容器X内の気体の圧力，温度，体積，内部エネルギーは表\ref{t3.1}のように与えられる。
+
+\begin{enumerate}[leftmargin=1zw, itemindent=7zw, labelsep=.6zw, itemsep=2zw]
+  \item[操作\ajMaru{1}($\mathrm{A\to B}$)] 容器Xを，容器Y，物体Zのいずれとも接触しない位置に移動させた。
+  次に，ピストン上のおもりを質量が$m$になるまで徐々に減らした。
+
+  \item[操作\ajMaru{2}($\mathrm{B\to C}$)] 容器Xを物体Zに接触させ，容器X内の気体の温度が$\dfrac{4}{5}T_\text{A}$になるまで放置した。
+
+  \item[操作\ajMaru{3}($\mathrm{C\to D}$)] 容器Xを，容器Y，物体Zのいずれとも接触しない位置に移動させた。
+  次に，ピストン上のおもりを質量が$a^5m$になるまで徐々に増やした。この操作後の容器X内の気体の温度を$T_\text{D}$とする。
+
+  \item[操作\ajMaru{4}($\mathrm{D\to E}$)] 容器Xを容器Yと接触させ，容器X, Y内の気体の温度が等しくなるまで放置した。このときの温度を$T_\text{E}$とする。
+\end{enumerate}
+
+以下の設問に答えよ。
+
+\newpage
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \draw (0,14) node {状態A};
+    \draw (0,10.5) node {状態B};
+    \draw (0,7) node {状態C};
+    \draw (0,3.5) node {状態D};
+    \draw (0,0) node {状態E};
+    %
+    \foreach \i in {0, ..., 3}
+      \draw[thick, ->, >=stealth] (0,3.2+3.5*\i) -- (0,0.3+3.5*\i);
+    \foreach \i in {1, ..., 4}
+      \draw (0,15.75-3.5*\i) node [left] {操作\ajMaru{\i}};
+    %
+    \def\floorline#1{\draw #1 -- +(5.5,0);%
+      \fill[pattern={north east lines}] #1 rectangle ($#1+(5.5,-0.3)$);
+      \draw ($#1 + (5.5,0)$) node [right] {床};}
+    \makeatletter
+    \def\containerX{\@ifstar{\@@containerX}{\@containerX}}
+    \def\@@containerX#1#2#3#4{%
+      \draw[double] ($#1 + (1.5,0) + (#2,2)$) -- ($#1 + (1.5,0) + (#2,0)$) -- ($#1 + (2.5,0) + (#2,0)$) -- ($#1 + (2.5,0) + (#2,2)$);
+      \draw[double, thick] ($#1 + (1.5,0) + (#2,#4)$) -- ($#1 + (2.5,0) + (#2,#4)$);
+      \draw ($#1 + (2,0) + (#2,#4/2)$) node {#3};
+      \draw ($#1 + (2,0) + (#2,2)$) node [above] {容器X};
+      \draw[thick] ($#1 + (1.6,0.15) + (#2,#4)$) -- ($#1 + (1.7,0.05) + (#2,#4)$) -- ($#1 + (2.3,0.05) + (#2,#4)$) --($#1 + (2.4,0.15) + (#2,#4)$);
+      \fill[gray] ([shift={($#1 + (2,0.05) + (#2,#4)$)}]0:0.3) arc [radius=0.3, start angle=0, end angle= 180];
+      \draw[<-, >=stealth] ($#1 + (2,0.1) + (#2,#4)$) -- +(1,1);
+      \draw ($#1 + (3,1.1) + (#2,#4)$) node [right] {おもり（質量$a^5m$）};}
+    \def\@containerX#1#2#3#4{%
+      \draw[double] ($#1 + (1.5,0) + (#2,2)$) -- ($#1 + (1.5,0) + (#2,0)$) -- ($#1 + (2.5,0) + (#2,0)$) -- ($#1 + (2.5,0) + (#2,2)$);
+      \draw[double, thick] ($#1 + (1.5,0) + (#2,#4)$) -- ($#1 + (2.5,0) + (#2,#4)$);
+      \draw ($#1 + (2,0) + (#2,#4/2)$) node {#3};
+      \draw ($#1 + (2,0) + (#2,2)$) node [above] {容器X};
+      \draw[thick] ($#1 + (1.6,0.15) + (#2,#4)$) -- ($#1 + (1.7,0.05) + (#2,#4)$) -- ($#1 + (2.3,0.05) + (#2,#4)$) --($#1 + (2.4,0.15) + (#2,#4)$);
+      \fill[gray] ($#1 + (1.7,0.05) + (#2,#4)$) to [out=40, in =140] ($#1 + (2.3,0.05) + (#2,#4)$);
+      \draw[<-, >=stealth] ($#1 + (2,0.1) + (#2,#4)$) -- +(1,1);
+      \draw ($#1 + (3,1.1) + (#2,#4)$) node [right] {おもり（質量$m$）};}
+    \makeatother
+    \def\containerY#1#2{\draw[double] ($#1 + (0.5,0)$) rectangle ($#1 + (1.5,1)$);%
+      \draw ($#1 + (0.8,1)$) node [above] {容器Y};%
+      \draw ($#1 + (1,0.5)$) node {#2};}
+    \def\objectZ#1{\draw ($#1 + (3.5,0)$) rectangle ($#1 + (5,1)$);%
+      \fill[gray] ($#1 + (3.5,0)$) rectangle ($#1 + (5,1)$);
+      \draw ($#1 + (4.25,0.5)$) node {$\dfrac{4}{5}T_\text{A}$};%
+      \draw ($#1 + (4.25,1)$) node [above] {物体Z};}
+    %
+    \coordinate (A) at (1,13);
+    \floorline{(A)}
+    \containerY{(A)}{$T_\text{A}$}
+    \objectZ{(A)}
+    \containerX*{(A)}{0}{$T_\text{A}$}{0.6}
+    %
+    \coordinate (B) at (1,9.5);
+    \floorline{(B)}
+    \containerY{(B)}{$T_\text{A}$}
+    \objectZ{(B)}
+    \containerX{(B)}{0.5}{\relax}{1}
+    %
+    \coordinate (C) at (1,6);
+    \floorline{(C)}
+    \containerY{(C)}{$T_\text{A}$}
+    \objectZ{(C)}
+    \containerX{(C)}{1}{$\dfrac{4}{5}T_\text{A}$}{1.2}
+    %
+    \coordinate (D) at (1,2.5);
+    \floorline{(D)}
+    \containerY{(D)}{$T_\text{A}$}
+    \objectZ{(D)}
+    \containerX*{(D)}{0.5}{$T_\text{D}$}{1}
+    %
+    \coordinate (E) at (1,-1);
+    \floorline{(E)}
+    \containerY{(E)}{$T_\text{E}$}
+    \objectZ{(E)}
+    \containerX*{(E)}{0}{$T_\text{E}$}{0.8}
+  \end{tikzpicture}
+  \caption{}
+  \label{3.1}
+\end{figure}
+
+\clearpage
+
+\begin{enumerate}[label=\Roman*, itemindent=1zw]
+  \item 操作\ajMaru{1}〜\ajMaru{3}において，容器X内の気体がされた仕事をそれぞれ$W_1$,\,$W_2$,\,$W_3$とする。
+  $W_1$,\,$W_2$,\,$W_3$を，$R$,\,$T_\text{A}$,\,$a$を用いて表せ。
+
+  \item 操作\ajMaru{4}による容器X内の気体の状態変化$(\mathrm{D\to E})$について，以下の設問に答えよ。
+  \begin{enumerate}[label=\Kakko*]
+    \item 操作\ajMaru{4}による容器X内の気体の内部エネルギーの変化$\varDelta U_4$を，$R$,\,$T_\text{D}$,\,$T_\text{E}$を用いて表せ。
+    \item 操作\ajMaru{4}において，容器X内の気体がされた仕事$W_4$を，$R$,\,$T_\text{D}$,\,$T_\text{E}$を用いて表せ。
+    \item 状態Eにおける容器X内の気体の温度$T_\text{E}$を，$T_\text{A}$,\, $T_\text{D}$を用いて表せ。
+  \end{enumerate}
+
+  \newpage
+
+  \begin{table}[ht]
+    \centering
+    \caption{}
+    \label{t3.1}
+    \begin{tabular}{|c|c|c|c|c|}\hline
+      & 圧力 & 温度 & 体積 & 内部エネルギー \\\hline
+      状態A & $p_\text{A}$ & $T_\text{A}$ & $\dfrac{RT_\text{A}}{p_\text{A}}$ & $\dfrac{3}{2}RT_\text{A}$ \rule[-12pt]{0pt}{30pt} \\\hline
+      状態B & $\dfrac{p_\text{A}}{a^5}$ & $\dfrac{T_\text{A}}{a^2}$ & $a^3\dfrac{RT_\text{A}}{p_\text{A}}$ & $\dfrac{3}{2a^2}RT_\text{A}$ \rule[-12pt]{0pt}{30pt} \\\hline
+      状態C & $\dfrac{p_\text{A}}{a^5}$ & $\dfrac{4}{5}T_\text{A}$ & $\dfrac{4}{5}a^5\dfrac{RT_\text{A}}{p_\text{A}}$ & $\dfrac{6}{5}RT_\text{A}$ \rule[-12pt]{0pt}{30pt} \\\hline
+      状態D & $p_\text{A}$ & $\dfrac{4}{5}a^2T_\text{A}\ (=T_\text{D})$ & $\dfrac{4}{5}a^2\dfrac{RT_\text{A}}{p_\text{A}}$ & $\dfrac{6}{5}a^2RT_\text{A}$ \rule[-12pt]{0pt}{30pt} \\\hline
+    \end{tabular}
+  \end{table}
+
+  \newpage
+
+  \item $a$の値がある条件を満たすとき，操作\ajMaru{1}〜\ajMaru{4}は，容器X内の気体に対して仕事を行うことで，低温の物体Zから容器Y内の高温の気体に熱を運ぶ操作になっている。
+  操作\ajMaru{4}による容器Y内の気体の内部エネルギーの変化を$\varDelta U_\text{Y}$として，以下の設問に答えよ。
+  \begin{enumerate}[label=\Kakko*]
+    \item 操作\ajMaru{4}によって容器Y内の気体の内部エネルギーが増加する$(\varDelta U_\text{Y}>0)$とき，操作\ajMaru{1}〜\ajMaru{4}における容器X内の気体の圧力$p$と体積$V$の関係を表す図として最も適切なものを図\ref{3.2}の\ref{3.2-a}〜\ref{3.2-ka}の中から一つ選んで答えよ。
+
+    \item $\varDelta U_\text{Y}>0$となるための$a$に関する条件を答えよ。
+
+    \item 操作\ajMaru{1}〜\ajMaru{4}の間に容器X内の気体がされた仕事の総和を$W$，操作\ajMaru{2}において容器X内の気体が物体Zから受け取る熱量を$Q_2$とする。
+    $\varDelta U_\text{Y}$を，$W$と$Q_2$を用いて表せ。
+
+    \item 状態Eからさらに引き続き，操作\ajMaru{1}〜\ajMaru{4}を何度も繰り返すと，容器Y内の気体の温度は，ある温度$T_\text{F}$に漸近する。
+    $T_\text{F}$を，$T_\text{A}$と$a$を用いて表せ。
+  \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\begin{figure}[ht]
+  \centering
+  \setfigcapstyle{Kata}
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \draw[thick, ->, >=stealth] (0,0) -- (4,0);
+      \draw[thick, ->, >=stealth] (0,0) -- (0,4);
+      \draw (4,0) node [right] {$V$};
+      \draw (0,4) node [above] {$p$};
+      \draw (0,0) node [below left] {$0$};
+      %
+      \coordinate (A) at (0.8,3.5);
+      \coordinate (B) at (1.5,1);
+      \coordinate (C) at (3.5,0.5);
+      \coordinate (D) at (1.4,2.5);
+      \coordinate (E) at (1.1,3.5);
+      \foreach \i in {A, ..., E}
+        \fill (\i) circle [radius=0.05];
+      %
+      \begin{scope}[decoration={markings, mark=at position 0.5 with {\arrow{>}}}]
+        \draw[postaction={decorate}] (A) to[out=-85, in=120] (B);
+        \draw[postaction={decorate}] (B) to[out=-30, in=175] (C);
+        \draw[postaction={decorate}] (C) to[out=160, in=-70] (D);
+        \draw[postaction={decorate}] (D) to[out=115, in=-85] (E);
+      \end{scope}
+      %
+      \draw (A)[xshift=-5pt] node [above] {状態A};
+      \draw (B) node [below left] {状態B};
+      \draw (C)[yshift=2pt] node [above] {状態C};
+      \draw (D) node [right] {状態D};
+      \draw (E) node [right] {状態E};
+    \end{tikzpicture}
+    \caption{}
+    \label{3.2-a}
+  \end{minipage}
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \draw[thick, ->, >=stealth] (0,0) -- (4,0);
+      \draw[thick, ->, >=stealth] (0,0) -- (0,4);
+      \draw (4,0) node [right] {$V$};
+      \draw (0,4) node [above] {$p$};
+      \draw (0,0) node [below left] {$0$};
+      %
+      \coordinate (A) at (1.8,3.5);
+      \coordinate (B) at (3.5,0.5);
+      \coordinate (C) at (2,0.5);
+      \coordinate (D) at (0.8,3.5);
+      \coordinate (E) at (1.1,3.5);
+      \foreach \i in {A, ..., E}
+        \fill (\i) circle [radius=0.05];
+      %
+      \begin{scope}[decoration={markings, mark=at position 0.5 with {\arrow{>}}}]
+        \draw[postaction={decorate}] (A) to[out=-75, in=150] (B);
+        \draw[postaction={decorate}] (B) -- (C);
+        \draw[postaction={decorate}] (C) to[out=140, in=-85] (D);
+        \draw[postaction={decorate}] (D) -- (E);
+      \end{scope}
+      %
+      \draw (A) node [right] {状態A};
+      \draw (B) node [above right] {状態B};
+      \draw (C) node [left] {状態C};
+      \draw (D)[xshift=-5pt, yshift=5pt] node [above] {状態D};
+      \draw (E)[yshift=8pt] node [above right] {状態E};
+      %
+      \draw[<-] (D)+(-0.1,0) to [out=180, in=-90] +(-0.4,0.3);
+      \draw[<-] (E)+(0.1,0) -- +(0.5,0.4);
+    \end{tikzpicture}
+    \caption{}
+    \label{3.2-i}
+  \end{minipage}
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \draw[thick, ->, >=stealth] (0,0) -- (4,0);
+      \draw[thick, ->, >=stealth] (0,0) -- (0,4);
+      \draw (4,0) node [right] {$V$};
+      \draw (0,4) node [above] {$p$};
+      \draw (0,0) node [below left] {$0$};
+      %
+      \coordinate (B) at (2,0.5);
+      \coordinate (C) at (3.5,0.5);
+      \coordinate (D) at (1.8,3.5);
+      \coordinate (A) at (0.8,3.5);
+      \coordinate (E) at (0.5,3.5);
+      \foreach \i in {A, ..., E}
+        \fill (\i) circle [radius=0.05];
+      %
+      \begin{scope}[decoration={markings, mark=at position 0.5 with {\arrow{>}}}]
+        \draw[postaction={decorate}] (A) to[out=-85, in=145] (B);
+        \draw[postaction={decorate}] (B) -- (C);
+        \draw[postaction={decorate}] (C) to[out=150, in=-80] (D);
+        \draw[postaction={decorate}] (D) -- (E);
+      \end{scope}
+      %
+      \draw (A)[xshift=12pt, yshift=8pt] node [above right] {状態A};
+      \draw (B) node [left] {状態B};
+      \draw (C) node [right] {状態C};
+      \draw (D) node [right] {状態D};
+      \draw (E)[xshift=4pt, yshift=10pt] node [above] {状態E};
+      %
+      \draw[<-] (A)+(0.1,0.1) -- +(0.8,0.4);
+      \draw[<-] (E)+(0,0.1) -- +(0,0.4);
+    \end{tikzpicture}
+    \caption{}
+    \label{3.2-u}
+  \end{minipage}
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}
+    \draw[thick, ->, >=stealth] (0,0) -- (4,0);
+    \draw[thick, ->, >=stealth] (0,0) -- (0,4);
+    \draw (4,0) node [right] {$V$};
+    \draw (0,4) node [above] {$p$};
+    \draw (0,0) node [below left] {$0$};
+    %
+    \coordinate (A) at (1.4,2.5);
+    \coordinate (B) at (3.5,0.5);
+    \coordinate (C) at (1.5,1);
+    \coordinate (D) at (0.8,3.5);
+    \coordinate (E) at (1.1,2.5);
+    \foreach \i in {A, ..., E}
+      \fill (\i) circle [radius=0.05];
+    %
+    \begin{scope}[decoration={markings, mark=at position 0.5 with {\arrow{>}}}]
+      \draw[postaction={decorate}] (A) to[out=-85, in=160] (B);
+      \draw[postaction={decorate}] (B) to[out=175, in=-35] (C);
+      \draw[postaction={decorate}] (C) to[out=120, in=-85] (D);
+      \draw[postaction={decorate}] (D) to[out=-80, in=120] (E);
+    \end{scope}
+    %
+    \draw (A) node [right] {状態A};
+    \draw (B)[yshift=5pt] node [above] {状態B};
+    \draw (C) node [below left] {状態C};
+    \draw (D) node [above] {状態D};
+    \draw (E)[xshift=10pt, yshift=10pt] node [above right] {状態E};
+    %
+    \draw[<-] (E)+(0,0.1) -- +(0.4,0.5);
+    \end{tikzpicture}
+    \caption{}
+    \label{3.2-e}
+  \end{minipage}
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \draw[thick, ->, >=stealth] (0,0) -- (4,0);
+      \draw[thick, ->, >=stealth] (0,0) -- (0,4);
+      \draw (4,0) node [right] {$V$};
+      \draw (0,4) node [above] {$p$};
+      \draw (0,0) node [below left] {$0$};
+      %
+      \coordinate (A) at (0.8,3.5);
+      \coordinate (B) at (2,0.5);
+      \coordinate (C) at (3.5,0.5);
+      \coordinate (D) at (1.6,3.5);
+      \coordinate (E) at (1.1,3.5);
+      \foreach \i in {A, ..., E}
+        \fill (\i) circle [radius=0.05];
+      %
+      \begin{scope}[decoration={markings, mark=at position 0.5 with {\arrow{>}}}]
+        \draw[postaction={decorate}] (A) to[out=-85, in=160] (B);
+        \draw[postaction={decorate}] (B) -- (C);
+        \draw[postaction={decorate}] (C) to[out=140, in=-85] (D);
+        \draw[postaction={decorate}] (D) -- (E);
+      \end{scope}
+      %
+      \draw (A)[xshift=-5pt, yshift=5pt] node [above] {状態A};
+      \draw (B)[xshift=-5pt] node [left] {状態B};
+      \draw (C) node [above right] {状態C};
+      \draw (D) node [right] {状態D};
+      \draw (E)[yshift=8pt] node [above right] {状態E};
+      %
+      \draw[<-] (E)+(0.1,0.1) -- +(0.5,0.4);
+    \end{tikzpicture}
+    \caption{}
+    \label{3.2-o}
+  \end{minipage}
+  \begin{minipage}{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \draw[thick, ->, >=stealth] (0,0) -- (4,0);
+      \draw[thick, ->, >=stealth] (0,0) -- (0,4);
+      \draw (4,0) node [right] {$V$};
+      \draw (0,4) node [above] {$p$};
+      \draw (0,0) node [below left] {$0$};
+      %
+      \coordinate (A) at (1.6,3.5);
+      \coordinate (B) at (3.5,0.5);
+      \coordinate (C) at (2,0.5);
+      \coordinate (D) at (0.8,3.5);
+      \coordinate (E) at (1.9,3.5);
+      \foreach \i in {A, ..., E}
+        \fill (\i) circle [radius=0.05];
+      %
+      \begin{scope}[decoration={markings, mark=at position 0.5 with {\arrow{>}}}]
+        \draw[postaction={decorate}] (A) to[out=-85, in=160] (B);
+        \draw[postaction={decorate}] (B) -- (C);
+        \draw[postaction={decorate}] (C) to[out=140, in=-85] (D);
+        \draw[postaction={decorate}] (D) -- (E);
+      \end{scope}
+      %
+      \draw (A)[xshift=8pt, yshift=8pt] node [above] {状態A};
+      \draw (B) node [above right] {状態B};
+      \draw (C)[xshift=-5pt] node [left] {状態C};
+      \draw (D)[xshift=-5pt, yshift=5pt] node [above] {状態D};
+      \draw (E) node [right] {状態E};
+      %
+      \draw[<-] (A)+(0,0.1) -- +(0.2,0.4);
+    \end{tikzpicture}
+    \caption{}
+    \label{3.2-ka}
+  \end{minipage}
+  \previousfigcaption
+  \caption{}
+  \label{3.2}
+\end{figure}
+
+\clearpage
+
+\begin{center}
+  {\large 計　算　用　紙}\par
+  （切り離さないで用いよ。）
+\end{center}
+
+\newpage
+
+\begin{center}
+  {\large 計　算　用　紙}\par
+  （切り離さないで用いよ。）
+\end{center}
+
+\end{document}
