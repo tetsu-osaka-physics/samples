@@ -720,13 +720,13 @@ lineskip=-0.5ex
 
 \bigskip
 
-\begin{minipage}{0.35\hsize}
+\begin{minipage}{0.3\hsize}
   \begin{circuitikz}
     \draw (0, 0) to [capacitor, \Cwidth=0.4] (1.5, 0);
     \draw (0, -1) node [right] {\texttt{capacitor, \textbackslash Cwidth=0.4}};
   \end{circuitikz}
 \end{minipage}
-\begin{minipage}{0.6\hsize}
+\begin{minipage}{0.65\hsize}
   \begin{lstlisting}
     \begin{circuitikz}
       \draw (0, 0) to [capacitor, \Cwidth=0.4] (1.5, 0);
@@ -767,13 +767,13 @@ lineskip=-0.5ex
 
 \begin{minipage}{0.2\hsize}
   \begin{circuitikz}
-    \drawCapa*{(0, 0)}{(2, 0)}{$C_1$};
+    \drawCapa*{(0, 0)}{(2, 0)}{$C_1$}
   \end{circuitikz}
 \end{minipage}
 \begin{minipage}{0.75\hsize}
   \begin{lstlisting}
     \begin{circuitikz}
-      \drawCapa*{(0, 0)}{(2, 0)}{$C_1$};
+      \drawCapa*{(0, 0)}{(2, 0)}{$C_1$}
     \end{circuitikz}
   \end{lstlisting}
 \end{minipage}
@@ -784,19 +784,19 @@ lineskip=-0.5ex
 \end{center}
 銅線が横の場合に，右側の極板を$+$にするには\texttt{[r]}（省略可），左側の極板を$+$にするには\texttt{[l]}．
 銅線が縦の場合に，上側の極板を$+$にするには\texttt{[u]}，下側の極板を$+$にするには\texttt{[d]}．
-\textbf{終点は終点より右・上に配置すること！}
+\textbf{終点は始点より右・上に配置すること！}
 
 \bigskip
 
 \begin{minipage}{0.2\hsize}
   \begin{circuitikz}
-    \drawCapa{(0, 0)}{(2, 0)}{$C_1$}{$Q_1$};
+    \drawCapa{(0, 0)}{(2, 0)}{$C_1$}{$Q_1$}
   \end{circuitikz}
 \end{minipage}
 \begin{minipage}{0.75\hsize}
   \begin{lstlisting}
     \begin{circuitikz}
-      \drawCapa{(0, 0)}{(2, 0)}{$C_1$}{$Q_1$};
+      \drawCapa{(0, 0)}{(2, 0)}{$C_1$}{$Q_1$}
     \end{circuitikz}
   \end{lstlisting}
 \end{minipage}
@@ -805,13 +805,13 @@ lineskip=-0.5ex
 
 \begin{minipage}{0.2\hsize}
   \begin{circuitikz}
-    \drawCapa[l]{(0, 0)}{(2, 0)}{$C_1$}{$Q_1$};
+    \drawCapa[l]{(0, 0)}{(2, 0)}{$C_1$}{$Q_1$}
   \end{circuitikz}
 \end{minipage}
 \begin{minipage}{0.75\hsize}
   \begin{lstlisting}
     \begin{circuitikz}
-      \drawCapa[l]{(0, 0)}{(2, 0)}{$C_1$}{$Q_1$};
+      \drawCapa[l]{(0, 0)}{(2, 0)}{$C_1$}{$Q_1$}
     \end{circuitikz}
   \end{lstlisting}
 \end{minipage}
@@ -935,6 +935,27 @@ lineskip=-0.5ex
     \begin{circuitikz}
       \draw (0, 0) to [cute choke, twolineschoke] (2, 0);
     \end{circuitikz}
+  \end{lstlisting}
+\end{minipage}
+
+\paragraph{Tips}
+コイルの向きを明示する場合．
+\begin{center}
+  \texttt{\textbackslash drawcoil[!]}\{始点\}\{終点の相対座標\}\{振幅\}\{アスペクト比\}\{巻数\}
+\end{center}
+
+\begin{minipage}{0.3\hsize}
+  \begin{tikzpicture}
+    \drawcoil[R]{(0, 0)}{(4, 0)}{0.3cm}{0.4}{10}
+    \drawcoil[L]{(0, -1)}{(4, 0)}{0.3cm}{0.4}{10}
+  \end{tikzpicture}
+\end{minipage}
+\begin{minipage}{0.65\hsize}
+  \begin{lstlisting}
+    \begin{tikzpicture}
+      \drawcoil[R]{(0, 0)}{(4, 0)}{0.5cm}{0.4}{10}
+      \drawcoil[L]{(0, -1)}{(4, 0)}{0.5cm}{0.4}{10}
+    \end{tikzpicture}
   \end{lstlisting}
 \end{minipage}
 
